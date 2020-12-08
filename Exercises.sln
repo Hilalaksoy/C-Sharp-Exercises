@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F56A2FA6-34FA-4A64-8464-12307658FB29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ps", "ps", "{09F86217-2872-4859-A935-FF0FF0F81084}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dotNetCoreAPI", "dotNetCoreAPI", "{02A96467-1DA9-4CA6-9DBC-B6E7E5312930}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseLibrary.API", "src\ps\dotNetCoreAPI\CourseLibrary.API\CourseLibrary.API.csproj", "{EA74671F-C028-47C4-883C-08090AA69B84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA74671F-C028-47C4-883C-08090AA69B84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA74671F-C028-47C4-883C-08090AA69B84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA74671F-C028-47C4-883C-08090AA69B84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA74671F-C028-47C4-883C-08090AA69B84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{09F86217-2872-4859-A935-FF0FF0F81084} = {F56A2FA6-34FA-4A64-8464-12307658FB29}
+		{02A96467-1DA9-4CA6-9DBC-B6E7E5312930} = {09F86217-2872-4859-A935-FF0FF0F81084}
+		{EA74671F-C028-47C4-883C-08090AA69B84} = {02A96467-1DA9-4CA6-9DBC-B6E7E5312930}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC6DC759-5507-4671-B050-8455FF64E88C}
+	EndGlobalSection
+EndGlobal
