@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CourseLibrary.API.DbContexts;
 using CourseLibrary.API.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace CourseLibrary.API.Services
 {
@@ -40,6 +41,12 @@ namespace CourseLibrary.API.Services
             throw new NotImplementedException();
         }
 
+        public  async Task<IEnumerable<Author>> GetAuthors()
+        {
+           var authors=_context.Authors.ToListAsync();
+           return  await authors;
+        }
+
         public Task<IEnumerable<Author>> GetAuthorsAsync()
         {
             throw new NotImplementedException();
@@ -55,9 +62,10 @@ namespace CourseLibrary.API.Services
         //    throw new NotImplementedException();
         //}
 
-        public Task<Author> GetAuthorAsync(Guid authorId)
+        public async Task<Author> GetAuthorAsync(Guid authorId)
         {
-            throw new NotImplementedException();
+            return await _context.Authors.FirstOrDefaultAsync(i => i.Id == authorId);
+            //return await _context.Authors.FindAsync(authorId);
         }
 
         public Task<IEnumerable<Author>> GetAuthorsAsync(IEnumerable<Guid> authorsIds)
@@ -94,5 +102,6 @@ namespace CourseLibrary.API.Services
         {
             throw new NotImplementedException();
         }
+
     }
 }

@@ -17,6 +17,7 @@ namespace CourseLibrary.API.Services
         Task<IEnumerable<Author>> GetAuthorsAsync();
         Task<IEnumerable<Author>> GetAuthorsWithIdsAsync(IEnumerable<Guid> authorsIds);
         //PagedList<Author> GetAuthors(AuthorsResourceParameters authorsResourceParameters);
+        Task<IEnumerable<Author>> GetAuthors();
         Task<Author> GetAuthorAsync(Guid authorId);
         Task<IEnumerable<Author>> GetAuthorsAsync(IEnumerable<Guid> authorsIds);
         void AddAuthor(Author author);

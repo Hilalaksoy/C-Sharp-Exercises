@@ -7,6 +7,7 @@ using CourseLibrary.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,7 +28,16 @@ namespace CourseLibrary.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            //services.AddControllers().AddNewtonsoftJson(options =>
+            //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            //);
+
+            services.AddControllers(setupAction =>
+            {
+                //not supported xml format
+                setupAction.ReturnHttpNotAcceptable = true;
+            }).AddXmlDataContractSerializerFormatters(); //add xml formatter.
+
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 
             services.AddDbContext<CourseLibraryContext>(options =>
