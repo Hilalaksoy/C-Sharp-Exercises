@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CourseLibrary.API.DbContexts;
+using CourseLibrary.API.Profiles;
 using CourseLibrary.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +41,8 @@ namespace CourseLibrary.API
             }).AddXmlDataContractSerializerFormatters(); //add xml formatter.
 
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
+            services.AddAutoMapper(typeof(AuthorsProfile));
+            services.AddAutoMapper(typeof(CoursesProfile));
 
             services.AddDbContext<CourseLibraryContext>(options =>
                 {
