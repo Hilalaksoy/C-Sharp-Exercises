@@ -22,6 +22,18 @@ namespace CourseLibrary.API.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        public ActionResult<List<CourseDto>> GetCoursesForAuthor(Guid authorId)
+        {
+            if (!_courseLibraryRepository.AuthorExists(authorId))
+            {
+                return NotFound();
+            }
+
+            var courses =  _courseLibraryRepository.GetCoursesAsync(authorId).Result;
+            return _mapper.Map<List<CourseDto>>(courses);
+        }
+
         [HttpGet("{courseId}", Name = "GetCourseForAuthor")]
         public ActionResult<CourseDto> GetCourseForAuthor(Guid authorId, Guid courseId)
         {

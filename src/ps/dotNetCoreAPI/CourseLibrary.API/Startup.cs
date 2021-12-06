@@ -44,6 +44,7 @@ namespace CourseLibrary.API
             services.AddAutoMapper(typeof(AuthorsProfile));
             services.AddAutoMapper(typeof(CoursesProfile));
 
+            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddDbContext<CourseLibraryContext>(options =>
                 {
                     options.UseSqlServer(@"Server=localhost;Database=CourseLibrary;Trusted_Connection=true;");

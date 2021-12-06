@@ -100,13 +100,25 @@ namespace CourseLibrary.API.Services
             return await _context.Authors.FindAsync(authorId);
         }
 
-        public Task<IEnumerable<Author>> GetAuthorsAsync(IEnumerable<Guid> authorsIds)
+        public async Task<IEnumerable<Author>> GetAuthorsAsync(IEnumerable<Guid> authorsIds)
         {
-            throw new NotImplementedException();
+            var authors = new List<Author>();
+            foreach (var authorId in authorsIds)
+            {
+                var author = await _context.Authors.FindAsync(authorId);
+                authors.Add(author);
+            }
+
+            return authors;
         }
 
         public async Task<Author> AddAuthor(Author author)
         {
+            if (author == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             var newAuthor = new Author
             {
                 Id = Guid.NewGuid(),
@@ -116,6 +128,12 @@ namespace CourseLibrary.API.Services
                 MainCategory = author.MainCategory
             };
 
+            foreach (var course in author.Courses)
+            {
+                course.Id = Guid.NewGuid();
+            }
+
+            newAuthor.Courses = author.Courses;
             await _context.Authors.AddAsync(newAuthor);
             return newAuthor;
         }

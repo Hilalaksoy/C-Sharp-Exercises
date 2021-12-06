@@ -8,6 +8,7 @@ using CourseLibrary.API.Models;
 using CourseLibrary.API.Profiles;
 using CourseLibrary.API.ResorceParameters;
 using CourseLibrary.API.Services;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourseLibrary.API.Controllers
@@ -56,6 +57,13 @@ namespace CourseLibrary.API.Controllers
             var authorDto =  _mapper.Map<AuthorDto>(newAuthor);
             // return CreatedAtRoute("GetAuthor", new {authorId = authorDto.Id }, authorDto);
             return authorDto;
+        }
+
+        [HttpOptions]
+        public IActionResult GetAuthorsOptions()
+        {
+            Response.Headers.Add("Allow","GET,OPTIONS,POST");
+            return Ok();
         }
 
     }
